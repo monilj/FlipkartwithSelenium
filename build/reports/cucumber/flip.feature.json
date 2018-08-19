@@ -1,0 +1,79 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "line": 13,
+        "name": "search some product",
+        "description": "",
+        "id": "test-search-functionality;search-some-product;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "comments": [
+              {
+                "line": 6,
+                "value": "#    Given User opens flipkart in firefox"
+              }
+            ],
+            "line": 7,
+            "name": "when user searches for redmi note 4",
+            "match": {},
+            "matchedColumns": [
+              0
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 8,
+            "name": "User should get that product in search results",
+            "match": {},
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 9,
+            "name": "User can select that product",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 10,
+            "name": "User can add product to cart",
+            "match": {},
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "line": 1,
+            "name": "@flip"
+          }
+        ]
+      }
+    ],
+    "name": "Test Search functionality",
+    "description": "",
+    "id": "test-search-functionality",
+    "keyword": "Feature",
+    "uri": "/Users/moniljoshi/Development/flipkartfromscratch/src/test/resources/features/flip.feature",
+    "tags": [
+      {
+        "line": 1,
+        "name": "@flip"
+      }
+    ]
+  }
+]

@@ -1,0 +1,112 @@
+import groovyx.gpars.GParsPool
+import net.masterthought.cucumber.ReportBuilder
+import net.masterthought.cucumber.Reportable
+
+group 'com'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'maven'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+buildscript {
+    repositories {
+        maven {
+            url "http://repo.bodar.com"
+        }
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.codehaus.gpars:gpars:1.2.1",
+                "net.masterthought:cucumber-reporting:3.5.1"
+    }
+}
+ext.cukesVersion = '1.2.5'
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'info.cukes', name: 'cucumber-java', version: '1.2.5'
+//    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.4.0'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.12.0'
+
+    compile group: 'net.masterthought', name: 'cucumber-reporting', version: "3.5.1"
+//    compile group: 'com.googlecode.totallylazy', name: 'totallylazy', version: '1.85'
+
+    compile group: 'info.cukes', name: 'cucumber-junit', version: "$cukesVersion"
+    compile group: 'info.cukes', name: 'cucumber-core', version: "$cukesVersion"
+    compile group: 'info.cukes', name: 'cucumber-java8', version: "$cukesVersion"
+
+    compile(
+            "org.codehaus.groovy:groovy-all:2.4.7"
+    )
+
+}
+
+
+
+
+
+task runInParallel {
+    doLast {
+        def testProperties = "-Dmode=gui"
+        runCucumberTests(testProperties)
+    }
+}
+def runCucumberTests(testProperties) {
+    def features = fileTree(dir: "${project.projectDir}/src/test/resources/features/").include '**/*.feature'
+
+    GParsPool.withPool(2) {
+        features.eachParallel { File file ->
+            exec {
+                executable "sh"
+                args "-c", "mkdir -p ${reporting.baseDir}/cucumber" +
+                        "&& java ${testProperties} " +
+                        "-cp ${sourceSets.main.runtimeClasspath.asPath} " +
+                        "cucumber.api.cli.Main " +
+//                        "--glue classpath:steps " +
+                        "${project.projectDir}/src/test/resources/features/${file.name} " +
+                        "--plugin json:${reporting.baseDir}/cucumber/${file.name}.json " +
+                        "--plugin pretty > ${reporting.baseDir}/cucumber/${file.name}.log "
+            }
+            println("${file.name}: Scenario output: ${reporting.baseDir}/cucumber/${file.name}.log ")
+        }
+    }
+    generateReport()
+}
+
+
+
+test {
+    testLogging.showStandardStreams = true
+    systemProperties System.getProperties()
+}
+
+
+
+def generateReport() {
+    def jsonReports = fileTree(dir: "${reporting.baseDir}/cucumber/").include '**/*.json'.toString()
+    File reportOutputDirectory = new File("${reporting.baseDir}/cucumber");
+
+    List<String> jsonReportFiles = new ArrayList<String>();
+    jsonReports.each { File file ->
+        jsonReportFiles.add("${reporting.baseDir}/cucumber/${file.name}".toString());
+    }
+
+    net.masterthought.cucumber.Configuration configuration = new net.masterthought.cucumber.Configuration(reportOutputDirectory, "cucumber-gradle-parallel");
+    // optional configuration
+    configuration.setParallelTesting(true);
+    configuration.setRunWithJenkins(false);
+    configuration.setBuildNumber("1988");
+
+    ReportBuilder reportBuilder = new ReportBuilder(jsonReportFiles, configuration);
+    Reportable result = reportBuilder.generateReports();
+    println("\nReport available on: ${reporting.baseDir}/cucumber/cucumber-html-reports/overview-features.html")
+}

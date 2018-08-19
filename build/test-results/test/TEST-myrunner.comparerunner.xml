@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="myrunner.comparerunner" tests="0" skipped="0" failures="0" errors="0" timestamp="1970-01-01T00:00:00" hostname="Monils-MacBook-Pro.local" time="0.0">
+  <properties/>
+  <system-out><![CDATA[@compare
+Feature: Test compare functionality
+
+  Scenario Outline: compare some products                             ?[90m# compare.feature:5?[0m
+    ?[36mGiven ?[0m?[36mUser opens flipkart in firefox?[0m
+    ?[36mWhen ?[0m?[36mUser mouse hover on "<top_menu>"?[0m
+    ?[36mAnd ?[0m?[36mClick on "<sub_menu>"?[0m
+    ?[36mAnd ?[0m?[36mChecked checkbox Add to Compare for <product1> and <product2>?[0m
+    ?[36mAnd ?[0m?[36mClick on COMPARE?[0m
+    ?[36mThen ?[0m?[36mUser should redirect to Compare page?[0m
+
+    Examples: 
+User clicked on DSLR
+User checked 1st product
+user checked 2nd product
+user clicked on COMPARE keyword
+
+  @compare
+  Scenario Outline: compare some products           ?[90m# compare.feature:15?[0m
+    ?[32mGiven ?[0m?[32mUser opens flipkart in firefox?[0m            ?[90m# StartingSteps.User_opens_flipkart_in_firefox()?[0m
+    ?[32mWhen ?[0m?[32mUser mouse hover on "?[0m?[32m?[1mElectronics?[0m?[32m"?[0m          ?[90m# HomePageStep.user_mouse_hover_on(String)?[0m
+    ?[32mAnd ?[0m?[32mClick on "?[0m?[32m?[1mDSLR?[0m?[32m"?[0m                             ?[90m# HomePageStep.click_on_(String)?[0m
+    ?[32mAnd ?[0m?[32mChecked checkbox Add to Compare for ?[0m?[32m?[1m0?[0m?[32m and ?[0m?[32m?[1m1?[0m ?[90m# SearchPageStep.checked_checkbox_Add_to_Compare_for(int,int)?[0m
+    ?[32mAnd ?[0m?[32mClick on COMPARE?[0m                            ?[90m# SearchPageStep.click_on_COMPARE()?[0m
+    ?[32mThen ?[0m?[32mUser should redirect to Compare page?[0m       ?[90m# ComparePageStep.user_should_redirect_to_Compare_page()?[0m
+
+1 Scenarios (?[32m1 passed?[0m)
+6 Steps (?[32m6 passed?[0m)
+0m10.665s
+
+]]></system-out>
+  <system-err><![CDATA[1506421343641	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
+1506421344366	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
+1506421344634	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
+1506421345027	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
+1506421345605	Marionette	INFO	New connections will no longer be accepted
+]]></system-err>
+</testsuite>

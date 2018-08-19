@@ -1,0 +1,47 @@
+@flip
+Feature: Test Search functionality
+
+  Scenario Outline: search some product                 [90m# /Users/moniljoshi/Development/flipkartfromscratch/src/test/resources/features/flip.feature:5[0m
+    #    Given User opens flipkart in firefox
+    [36mWhen [0m[36mwhen user searches for <mobileName>[0m
+    [36mThen [0m[36mUser should get that product in search results[0m
+    [36mAnd [0m[36mUser can select that product[0m
+    [36mAnd [0m[36mUser can add product to cart[0m
+
+    Examples: 
+
+  @flip
+  Scenario Outline: search some product                 [90m# /Users/moniljoshi/Development/flipkartfromscratch/src/test/resources/features/flip.feature:13[0m
+    #    Given User opens flipkart in firefox
+    [33mWhen [0m[33mwhen user searches for redmi note 4[0m
+    [33mThen [0m[33mUser should get that product in search results[0m
+    [33mAnd [0m[33mUser can select that product[0m
+    [33mAnd [0m[33mUser can add product to cart[0m
+
+1 Scenarios ([33m1 undefined[0m)
+4 Steps ([33m4 undefined[0m)
+0m0.000s
+
+
+You can implement missing steps with the snippets below:
+
+When("^when user searches for redmi note (\\d+)$", (Integer arg1) -> {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+});
+
+Then("^User should get that product in search results$", () -> {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+});
+
+Then("^User can select that product$", () -> {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+});
+
+Then("^User can add product to cart$", () -> {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+});
+

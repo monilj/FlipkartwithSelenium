@@ -1,0 +1,59 @@
+@compare
+Feature: Test compare functionality
+
+  Scenario Outline: compare some products                             [90m# /Users/moniljoshi/Development/flipkartfromscratch/src/test/resources/features/compare.feature:5[0m
+    [36mGiven [0m[36mUser opens flipkart in firefox[0m
+    [36mWhen [0m[36mUser mouse hover on "<top_menu>"[0m
+    [36mAnd [0m[36mClick on "<sub_menu>"[0m
+    [36mAnd [0m[36mChecked checkbox Add to Compare for <product1> and <product2>[0m
+    [36mAnd [0m[36mClick on COMPARE[0m
+    [36mThen [0m[36mUser should redirect to Compare page[0m
+
+    Examples: 
+
+  @compare
+  Scenario Outline: compare some products           [90m# /Users/moniljoshi/Development/flipkartfromscratch/src/test/resources/features/compare.feature:15[0m
+    [33mGiven [0m[33mUser opens flipkart in firefox[0m
+    [33mWhen [0m[33mUser mouse hover on "Electronics"[0m
+    [33mAnd [0m[33mClick on "DSLR"[0m
+    [33mAnd [0m[33mChecked checkbox Add to Compare for 0 and 1[0m
+    [33mAnd [0m[33mClick on COMPARE[0m
+    [33mThen [0m[33mUser should redirect to Compare page[0m
+
+1 Scenarios ([33m1 undefined[0m)
+6 Steps ([33m6 undefined[0m)
+0m0.000s
+
+
+You can implement missing steps with the snippets below:
+
+Given("^User opens flipkart in firefox$", () -> {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+});
+
+When("^User mouse hover on \"([^\"]*)\"$", (String arg1) -> {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+});
+
+When("^Click on \"([^\"]*)\"$", (String arg1) -> {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+});
+
+When("^Checked checkbox Add to Compare for (\\d+) and (\\d+)$", (Integer arg1, Integer arg2) -> {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+});
+
+When("^Click on COMPARE$", () -> {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+});
+
+Then("^User should redirect to Compare page$", () -> {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+});
+

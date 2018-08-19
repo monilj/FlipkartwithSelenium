@@ -1,0 +1,98 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "line": 15,
+        "name": "compare some products",
+        "description": "",
+        "id": "test-compare-functionality;compare-some-products;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 6,
+            "name": "User opens flipkart in firefox",
+            "match": {},
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 7,
+            "name": "User mouse hover on \"Electronics\"",
+            "match": {},
+            "matchedColumns": [
+              0
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 8,
+            "name": "Click on \"DSLR\"",
+            "match": {},
+            "matchedColumns": [
+              1
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 9,
+            "name": "Checked checkbox Add to Compare for 0 and 1",
+            "match": {},
+            "matchedColumns": [
+              2,
+              3
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 10,
+            "name": "Click on COMPARE",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 11,
+            "name": "User should redirect to Compare page",
+            "match": {},
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 1,
+            "name": "@compare"
+          }
+        ]
+      }
+    ],
+    "name": "Test compare functionality",
+    "description": "",
+    "id": "test-compare-functionality",
+    "keyword": "Feature",
+    "uri": "/Users/moniljoshi/Development/flipkartfromscratch/src/test/resources/features/compare.feature",
+    "tags": [
+      {
+        "line": 1,
+        "name": "@compare"
+      }
+    ]
+  }
+]
